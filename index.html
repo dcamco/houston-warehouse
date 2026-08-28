@@ -163,6 +163,29 @@
     .unpriced-wrap article {
       background: #f3eee6;
     }
+
+    .kit {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.45rem 0.75rem;
+      margin: 0.15rem 0 0.75rem;
+      padding: 0.65rem 0.75rem;
+      background: #f7f1e6;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 0.88rem;
+    }
+    .kit span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .kit strong { font-weight: 600; }
+    @media (max-width: 720px) {
+      .kit { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 720px) {
       article { grid-template-columns: 1fr; }
       article .pic img, article .pic { min-height: 220px; max-height: 260px; }
@@ -187,6 +210,14 @@
         </div>
         <h2><a href="https://www.craigslist.org/view/d/houston-dashwood-dr-workshop-warehouse/ht3RAG97JkKcEVcuDRjW1J" target="_blank" rel="noopener">5611 Dashwood Dr</a></h2>
         <p class="addr">Houston, TX 77081 · Gulfton · ~6 mi</p>
+        <div class="kit">
+          <div><span>Bath</span><strong>Private</strong></div>
+          <div><span>Office</span><strong>Private</strong></div>
+          <div><span>Yard / parking</span><strong>Not listed</strong></div>
+          <div><span>Door</span><strong>Grade-level (size unknown)</strong></div>
+          <div><span>Power</span><strong>Not listed</strong></div>
+          <div><span>Auto / cars</span><strong>Unknown · confirm</strong></div>
+        </div>
         <div class="stats">
           <div><span>Size</span><strong>~1,800 sf workshop</strong></div>
           <div><span>Rent</span><strong>$1,750/mo posted</strong></div>
@@ -211,6 +242,14 @@
         </div>
         <h2><a href="https://www.facebook.com/marketplace/item/989084144090832/" target="_blank" rel="noopener">6008 W 34th St · #6022</a></h2>
         <p class="addr">Houston, TX 77092 · Oak Forest · ~7 mi</p>
+        <div class="kit">
+          <div><span>Bath</span><strong>Private</strong></div>
+          <div><span>Office</span><strong>Private · AC</strong></div>
+          <div><span>Yard / parking</span><strong>1,600 sf fenced + designated parking</strong></div>
+          <div><span>Door</span><strong>Grade-level</strong></div>
+          <div><span>Power</span><strong>Not listed</strong></div>
+          <div><span>Auto / cars</span><strong>Unknown · confirm</strong></div>
+        </div>
         <div class="stats">
           <div><span>Size</span><strong>1,200 sf + 1,600 sf yard</strong></div>
           <div><span>Rent</span><strong>$2,120/mo all-in</strong></div>
@@ -225,7 +264,7 @@
         <a class="cta" href="https://www.facebook.com/marketplace/item/989084144090832/" target="_blank" rel="noopener">Open listing</a>
       </div>
     </article>
-    <article>
+<article>
       <div class="pic none"><strong>No listing photo</strong>WorkBay · confirm car storage</div>
       <div class="body">
         <div class="badges">
@@ -234,6 +273,14 @@
         </div>
         <h2><a href="https://workbay.com/park/jessamine/" target="_blank" rel="noopener">WorkBay Jessamine</a></h2>
         <p class="addr">6020 Jessamine St, Houston, TX 77081 · Gulfton · ~7.5 mi</p>
+        <div class="kit">
+          <div><span>Bath</span><strong>Private</strong></div>
+          <div><span>Office</span><strong>Private</strong></div>
+          <div><span>Yard / parking</span><strong>On-site parking (cars/trucks/vans)</strong></div>
+          <div><span>Door</span><strong>Private 10×10 roll-up + man door</strong></div>
+          <div><span>Power</span><strong>3-phase</strong></div>
+          <div><span>Auto / cars</span><strong>Unknown · confirm</strong></div>
+        </div>
         <div class="stats">
           <div><span>Size</span><strong>from 980–2,200 sf</strong></div>
           <div><span>Rent</span><strong>from $1,600/mo</strong></div>
@@ -248,8 +295,6 @@
         <a class="cta" href="https://workbay.com/park/jessamine/" target="_blank" rel="noopener">Open listing</a>
       </div>
     </article>
-
-
 <article>
       <div class="pic none"><strong>No listing photo</strong>CityFeet / Showcase</div>
       <div class="body">
@@ -260,6 +305,14 @@
         </div>
         <h2><a href="https://www.cityfeet.com/cont/listing/5900-5934-s-loop-fwy-houston-tx-77033/cs25532928" target="_blank" rel="noopener">South Loop Business Park</a></h2>
         <p class="addr">5900–5934 S Loop Fwy, Houston, TX 77033 · ~8 mi</p>
+        <div class="kit">
+          <div><span>Bath</span><strong>Not listed</strong></div>
+          <div><span>Office</span><strong>Dedicated office</strong></div>
+          <div><span>Yard / parking</span><strong>Not listed</strong></div>
+          <div><span>Door</span><strong>Semi-dock + drive-in ramps</strong></div>
+          <div><span>Power</span><strong>Not listed</strong></div>
+          <div><span>Auto / cars</span><strong>Unknown · need auto-yes</strong></div>
+        </div>
         <div class="stats">
           <div><span>Access</span><strong>Semi-dock + drive-in</strong></div>
           <div><span>Lease</span><strong>1 year listed · NNN</strong></div>
@@ -294,6 +347,14 @@
         </div>
         <h2><a href="https://www.loopnet.com/Listing/7330-Rampart-St-Houston-TX/35350852/" target="_blank" rel="noopener">Rampart Business Park</a></h2>
         <p class="addr">7330–7334 Rampart St, Houston, TX 77081 · Gulfton / SW Inner Loop · ~8 mi</p>
+        <div class="kit">
+          <div><span>Bath</span><strong>Restroom in suite</strong></div>
+          <div><span>Office</span><strong>Yes</strong></div>
+          <div><span>Yard / parking</span><strong>Not listed</strong></div>
+          <div><span>Door</span><strong>Street-level overhead · 12′ clear</strong></div>
+          <div><span>Power</span><strong>Not listed</strong></div>
+          <div><span>Auto / cars</span><strong>Unknown · need auto-yes</strong></div>
+        </div>
         <div class="stats">
           <div><span>Size</span><strong>~1,500 sf suites</strong></div>
           <div><span>Base</span><strong>$1,250–$1,375/mo</strong></div>
@@ -318,6 +379,14 @@
         </div>
         <h2><a href="https://www.craigslist.org/view/d/houston-5562-gasmer-dr-workshop-for/kaa2AVB4ZjaVz51rkbsf6o" target="_blank" rel="noopener">5562 Gasmer Dr</a></h2>
         <p class="addr">Houston, TX 77035 · SW Houston · ~9 mi</p>
+        <div class="kit">
+          <div><span>Bath</span><strong>Private (same landlord as Dashwood)</strong></div>
+          <div><span>Office</span><strong>Private</strong></div>
+          <div><span>Yard / parking</span><strong>Not listed</strong></div>
+          <div><span>Door</span><strong>Workshop / grade-level</strong></div>
+          <div><span>Power</span><strong>Not listed</strong></div>
+          <div><span>Auto / cars</span><strong>Unknown · confirm</strong></div>
+        </div>
         <div class="stats">
           <div><span>Size</span><strong>~1,209 / ~1,800 sf</strong></div>
           <div><span>Rent</span><strong>$1,350 / $1,850</strong></div>
@@ -341,6 +410,14 @@
         </div>
         <h2><a href="https://www.facebook.com/marketplace/item/2271159426991213/" target="_blank" rel="noopener">North Freeway Business Park</a></h2>
         <p class="addr">7676 N. Fwy, Houston, TX 77022 · Near Northside / I-45 · ~9–10 mi</p>
+        <div class="kit">
+          <div><span>Bath</span><strong>Private</strong></div>
+          <div><span>Office</span><strong>Private</strong></div>
+          <div><span>Yard / parking</span><strong>Not listed</strong></div>
+          <div><span>Door</span><strong>Not listed</strong></div>
+          <div><span>Power</span><strong>Not listed</strong></div>
+          <div><span>Auto / cars</span><strong>Unknown · confirm</strong></div>
+        </div>
         <div class="stats">
           <div><span>Size</span><strong>940–1,250 sf</strong></div>
           <div><span>Rent</span><strong>$1,150 / $1,250/mo</strong></div>
@@ -367,6 +444,14 @@
         </div>
         <h2><a href="https://www.hellocrate.co/" target="_blank" rel="noopener">Crate Warehouse</a></h2>
         <p class="addr">7250 W 43rd St, Houston, TX 77092 · NW Inner Loop · ~10 mi</p>
+        <div class="kit">
+          <div><span>Bath</span><strong>Shared kitchen/bath · private office extra</strong></div>
+          <div><span>Office</span><strong>Extra from $400/mo</strong></div>
+          <div><span>Yard / parking</span><strong>On-site / docks</strong></div>
+          <div><span>Door</span><strong>Dock-high, semi-dock, ramp</strong></div>
+          <div><span>Power</span><strong>1,200A 277–480V 3-phase</strong></div>
+          <div><span>Auto / cars</span><strong>Unknown · need auto-yes</strong></div>
+        </div>
         <div class="stats">
           <div><span>Size</span><strong>1,000 / 1,250 / 1,500 / 2,000 sf</strong></div>
           <div><span>Rent</span><strong>600–1,200 sf $1k–$2k all-in</strong></div>
@@ -389,6 +474,14 @@
         </div>
         <h2><a href="https://www.craigslist.org/view/d/south-houston-office-warehouse-space/qzzS1u2kaBsyky1QxtnwNk" target="_blank" rel="noopener">9125 Airport Blvd</a></h2>
         <p class="addr">Houston, TX 77061 · Hobby / SE · ~10 mi</p>
+        <div class="kit">
+          <div><span>Bath</span><strong>1 private bath</strong></div>
+          <div><span>Office</span><strong>12.5×17.5 office</strong></div>
+          <div><span>Yard / parking</span><strong>Not listed</strong></div>
+          <div><span>Door</span><strong>Grade-level 10×10</strong></div>
+          <div><span>Power</span><strong>Not listed</strong></div>
+          <div><span>Auto / cars</span><strong>Unknown · confirm</strong></div>
+        </div>
         <div class="stats">
           <div><span>Size</span><strong>1,250 sf</strong></div>
           <div><span>Rent</span><strong>$1,200/mo</strong></div>
@@ -412,6 +505,14 @@
         </div>
         <h2><a href="https://www.crexi.com/lease/properties/1076998/texas-34th-st-business-park" target="_blank" rel="noopener">34th St Business Park</a></h2>
         <p class="addr">4800 W 34th St, Houston, TX 77092 · ~9 mi</p>
+        <div class="kit">
+          <div><span>Bath</span><strong>Not listed per suite</strong></div>
+          <div><span>Office</span><strong>Flex / executive office mix</strong></div>
+          <div><span>Yard / parking</span><strong>Not listed</strong></div>
+          <div><span>Door</span><strong>Not listed per suite</strong></div>
+          <div><span>Power</span><strong>Not listed</strong></div>
+          <div><span>Auto / cars</span><strong>Unknown · confirm</strong></div>
+        </div>
         <div class="stats">
           <div><span>Best fit</span><strong>C-7 · 1,118 sf</strong></div>
           <div><span>All-in</span><strong>~$1,476–$2,035/mo</strong></div>
