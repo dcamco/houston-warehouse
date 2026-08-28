@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Houston warehouse hunt · 77006</title>
+  <meta name="description" content="Live 1,000–2,000 sf warehouse / industrial / flex bays ranked by drive to Montrose 77006." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a1714;
+      --muted: #6b645c;
+      --paper: #f4efe6;
+      --card: #fffdf8;
+      --line: #ddd4c6;
+      --accent: #c45c16;
+      --ok: #2f6b3a;
+      --warn: #8a5a12;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    header {
+      padding: 2.25rem 1.25rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--line);
+    }
+    .kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin: 0.35rem 0 0.4rem;
+      letter-spacing: -0.02em;
+    }
+    .meta { color: var(--muted); font-size: 0.95rem; max-width: 46rem; }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+    article {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 280px) 1fr;
+    }
+    article .pic {
+      min-height: 220px;
+      background: #e8e0d4;
+      position: relative;
+    }
+    article .pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      min-height: 220px;
+    }
+    article .pic.none {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1rem;
+      background:
+        linear-gradient(180deg, #d9cfc0 0%, #cfc3b0 100%);
+      color: #4a433c;
+      font-size: 0.85rem;
+    }
+    article .pic.none strong { display: block; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; }
+    .body { padding: 1.1rem 1.2rem 1.2rem; }
+    .badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.45rem; }
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid var(--line);
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+    }
+    .badge.hot { color: var(--accent); border-color: #e8b48a; background: #fff3e8; }
+    .badge.warn { color: var(--warn); border-color: #e0c48a; background: #fff8e8; }
+    h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.28rem;
+      font-weight: 650;
+      margin: 0 0 0.2rem;
+    }
+    h2 a { color: inherit; text-decoration: none; }
+    h2 a:hover { text-decoration: underline; }
+    .addr { color: var(--muted); font-size: 0.9rem; margin: 0 0 0.45rem; }
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1.25rem;
+      font-size: 0.92rem;
+      margin: 0.35rem 0 0.7rem;
+    }
+    .stats strong { font-weight: 600; display: block; }
+    .stats span { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    p.desc { margin: 0 0 0.7rem; color: #3b352f; font-size: 0.95rem; }
+    .pc { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.9rem; font-size: 0.88rem; }
+    .pc h3 { margin: 0 0 0.25rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .pc ul { margin: 0; padding-left: 1.1rem; }
+    .pc li { margin: 0.15rem 0; }
+    .cta {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--paper);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 8px;
+    }
+    .cta:hover { background: #000; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 0.4rem 0 0.8rem; }
+    th, td { text-align: left; padding: 0.28rem 0.4rem; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 2.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a { color: inherit; }
+    @media (max-width: 720px) {
+      article { grid-template-columns: 1fr; }
+      article .pic img, article .pic { min-height: 220px; max-height: 260px; }
+      .pc { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="kicker">Warehouse hunt · 1,000–2,000 sf</div>
+    <h1>Closest to 77006</h1>
+    <p class="meta">Ranked by drive to Montrose, not cheapness. Target under $2,000/month all-in. Checked Friday Aug 28, 2026. Each card opens the original posting.</p>
+  </header>
+  <main>
+
+    <article>
+      <div class="pic"><img src="photos/readyspaces-east.jpg" alt="ReadySpaces East of Downtown, 5301 Polk St" /></div>
+      <div class="body">
+        <div class="badges">
+          <span class="badge hot">Closest</span>
+          <span class="badge">All-in · no NNN</span>
+          <span class="badge warn">Rent unposted</span>
+        </div>
+        <h2><a href="https://readyspaces.com/location/houston/east-of-downtown/" target="_blank" rel="noopener">ReadySpaces East · Unit F8</a></h2>
+        <p class="addr">5301 Polk St, Houston, TX 77023 · East End / Second Ward · ~4.5 mi</p>
+        <div class="stats">
+          <div><span>Size</span><strong>1,000 sf · available now</strong></div>
+          <div><span>Rent</span><strong>Contact · all-in</strong></div>
+          <div><span>Access</span><strong>Shared dock-high + drive-in</strong></div>
+          <div><span>Term</span><strong>90-day min, then MTM</strong></div>
+        </div>
+        <p class="desc">Closest live bay. Power, Wi-Fi, docks, forklift, and trash are in the monthly. No posted number, so this is the ranking hinge until they quote. Woodworking, auto-body, and welding not allowed.</p>
+        <div class="pc">
+          <div><h3>Pros</h3><ul><li>Closest to Montrose</li><li>All-in, 24/7, real docks</li><li>Short term, move-in now</li></ul></div>
+          <div><h3>Cons</h3><ul><li>No posted monthly</li><li>Shared docks</li><li>Use restrictions</li></ul></div>
+        </div>
+        <a class="cta" href="https://readyspaces.com/location/houston/east-of-downtown/" target="_blank" rel="noopener">Open listing</a>
+      </div>
+    </article>
+
+    <article>
+      <div class="pic"><img src="photos/readyspaces-east.jpg" alt="ReadySpaces East of Downtown, 5301 Polk St" /></div>
+      <div class="body">
+        <div class="badges">
+          <span class="badge">All-in · no NNN</span>
+          <span class="badge warn">Avail 8/31/2026</span>
+          <span class="badge warn">Rent unposted</span>
+        </div>
+        <h2><a href="https://readyspaces.com/location/houston/east-of-downtown/" target="_blank" rel="noopener">ReadySpaces East · Unit B4</a></h2>
+        <p class="addr">5301 Polk St, Houston, TX 77023 · East End / Second Ward · ~4.5 mi</p>
+        <div class="stats">
+          <div><span>Size</span><strong>1,250 sf · 8/31/2026</strong></div>
+          <div><span>Rent</span><strong>Contact · all-in</strong></div>
+          <div><span>Access</span><strong>Shared dock-high + drive-in</strong></div>
+          <div><span>Term</span><strong>90-day min, then MTM</strong></div>
+        </div>
+        <p class="desc">Same building as F8, slightly bigger, not empty until Aug 31. Same all-in model. Get both quotes on one call.</p>
+        <div class="pc">
+          <div><h3>Pros</h3><ul><li>Same close East End site</li><li>All-in, docks, short term</li></ul></div>
+          <div><h3>Cons</h3><ul><li>Wait until 8/31</li><li>No posted monthly</li></ul></div>
+        </div>
+        <a class="cta" href="https://readyspaces.com/location/houston/east-of-downtown/" target="_blank" rel="noopener">Open listing</a>
+      </div>
+    </article>
+
+    <article>
+      <div class="pic"><img src="photos/readyspaces-heights.jpg" alt="ReadySpaces The Heights, 1401 Greengrass Dr" /></div>
+      <div class="body">
+        <div class="badges">
+          <span class="badge">All-in · no NNN</span>
+          <span class="badge warn">Avail 8/31/2026</span>
+          <span class="badge warn">Rent unposted</span>
+        </div>
+        <h2><a href="https://readyspaces.com/location/houston/the-heights/" target="_blank" rel="noopener">ReadySpaces Heights · Unit E5</a></h2>
+        <p class="addr">1401 Greengrass Dr, Houston, TX 77008 · Heights / Washington · ~5 mi</p>
+        <div class="stats">
+          <div><span>Size</span><strong>1,500 sf · 8/31/2026</strong></div>
+          <div><span>Rent</span><strong>Contact · all-in</strong></div>
+          <div><span>Access</span><strong>Shared 2 drive-in · 22' clear</strong></div>
+          <div><span>Power</span><strong>120V (higher available)</strong></div>
+        </div>
+        <p class="desc">Next-closest operator bay. Drive-in only (no dock-high listed), 22' clear, 90-day then month-to-month. Same homework as Polk: get the all-in monthly before ranking it against Dashwood.</p>
+        <div class="pc">
+          <div><h3>Pros</h3><ul><li>Very close</li><li>All-in, short term, 22' clear</li></ul></div>
+          <div><h3>Cons</h3><ul><li>Not until 8/31</li><li>No posted monthly</li><li>Shared drive-in</li></ul></div>
+        </div>
+        <a class="cta" href="https://readyspaces.com/location/houston/the-heights/" target="_blank" rel="noopener">Open listing</a>
+      </div>
+    </article>
+
+    <article>
+      <div class="pic none"><strong>No listing photo</strong>Craigslist post · call to verify</div>
+      <div class="body">
+        <div class="badges">
+          <span class="badge hot">Posted under $2k</span>
+          <span class="badge">Grade-level</span>
+        </div>
+        <h2><a href="https://www.craigslist.org/view/d/houston-dashwood-dr-workshop-warehouse/ht3RAG97JkKcEVcuDRjW1J" target="_blank" rel="noopener">5611 Dashwood Dr</a></h2>
+        <p class="addr">Houston, TX 77081 · Gulfton · ~6 mi</p>
+        <div class="stats">
+          <div><span>Size</span><strong>~1,800 sf workshop</strong></div>
+          <div><span>Rent</span><strong>$1,750/mo posted</strong></div>
+          <div><span>Extras</span><strong>Water in · tenant electric</strong></div>
+          <div><span>Term</span><strong>6 months to 1 year</strong></div>
+        </div>
+        <p class="desc">Best posted-rent shop inside the inner ring. Own office and restroom, grade-level. Ricardo 832-391-1946 (same landlord as Gasmer). Craigslist: confirm it is still vacant before a drive-by.</p>
+        <div class="pc">
+          <div><h3>Pros</h3><ul><li>$1,750 posted, under cap</li><li>Own office + bath</li><li>Closer than South Loop</li></ul></div>
+          <div><h3>Cons</h3><ul><li>Gulfton</li><li>You pay electric</li><li>No dock / power spec</li></ul></div>
+        </div>
+        <a class="cta" href="https://www.craigslist.org/view/d/houston-dashwood-dr-workshop-warehouse/ht3RAG97JkKcEVcuDRjW1J" target="_blank" rel="noopener">Open listing</a>
+      </div>
+    </article>
+
+    <article>
+      <div class="pic none"><strong>No listing photo</strong>Facebook Marketplace</div>
+      <div class="body">
+        <div class="badges">
+          <span class="badge warn">$120 over $2k</span>
+          <span class="badge">Yard</span>
+          <span class="badge">All-in</span>
+        </div>
+        <h2><a href="https://www.facebook.com/marketplace/item/989084144090832/" target="_blank" rel="noopener">6008 W 34th St · #6022</a></h2>
+        <p class="addr">Houston, TX 77092 · Oak Forest · ~7 mi</p>
+        <div class="stats">
+          <div><span>Size</span><strong>1,200 sf + 1,600 sf yard</strong></div>
+          <div><span>Rent</span><strong>$2,120/mo all-in</strong></div>
+          <div><span>Access</span><strong>Grade-level</strong></div>
+          <div><span>Inside</span><strong>Insulated · office AC · private bath</strong></div>
+        </div>
+        <p class="desc">Closest shop-with-yard. Listing says price is all-in, no monthly fees. Over the $2k cap by $120. Confirm it is still live on Marketplace before treating it as a tour.</p>
+        <div class="pc">
+          <div><h3>Pros</h3><ul><li>Fenced yard</li><li>All-in, real address</li><li>Office AC + bath</li></ul></div>
+          <div><h3>Cons</h3><ul><li>$2,120</li><li>FB listing can vanish</li></ul></div>
+        </div>
+        <a class="cta" href="https://www.facebook.com/marketplace/item/989084144090832/" target="_blank" rel="noopener">Open listing</a>
+      </div>
+    </article>
+
+    <article>
+      <div class="pic none"><strong>No listing photo</strong>CityFeet / Showcase</div>
+      <div class="body">
+        <div class="badges">
+          <span class="badge hot">Cheapest base</span>
+          <span class="badge warn">CAM unknown</span>
+          <span class="badge">NNN</span>
+        </div>
+        <h2><a href="https://www.cityfeet.com/cont/listing/5900-5934-s-loop-fwy-houston-tx-77033/cs25532928" target="_blank" rel="noopener">South Loop Business Park</a></h2>
+        <p class="addr">5900–5934 S Loop Fwy, Houston, TX 77033 · ~8 mi</p>
+        <div class="stats">
+          <div><span>Access</span><strong>Semi-dock + drive-in</strong></div>
+          <div><span>Lease</span><strong>1 year listed · NNN</strong></div>
+          <div><span>Extra</span><strong>3 months free on 2-year (qualified)</strong></div>
+        </div>
+        <p class="desc">Traditional bay park. Base rent looks cheap until CAM is known. That CAM number is the other ranking hinge. Alt listing on Showcase.</p>
+        <table>
+          <thead><tr><th>Suite</th><th>Sf</th><th>Base / mo</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td>5908</td><td>1,004</td><td>$608</td><td>$7.27/SF/YR</td></tr>
+            <tr><td>5912</td><td>1,133</td><td>$686</td><td>$7.27/SF/YR</td></tr>
+            <tr><td>5938</td><td>1,295</td><td>$661</td><td>Sep 2026</td></tr>
+            <tr><td>5954</td><td>1,320</td><td>$790</td><td>$7.18/SF/YR</td></tr>
+            <tr><td>5930</td><td>1,788</td><td>$850</td><td>$5.70/SF/YR</td></tr>
+          </tbody>
+        </table>
+        <div class="pc">
+          <div><h3>Pros</h3><ul><li>Size fits, dock option</li><li>Lowest posted base</li></ul></div>
+          <div><h3>Cons</h3><ul><li>All-in unknown until CAM</li><li>South Loop</li></ul></div>
+        </div>
+        <a class="cta" href="https://www.cityfeet.com/cont/listing/5900-5934-s-loop-fwy-houston-tx-77033/cs25532928" target="_blank" rel="noopener">Open listing</a>
+        &nbsp;
+        <a class="cta" href="https://www.showcase.com/5900-5934-s-loop-fwy-houston-tx-77033/25532928/" target="_blank" rel="noopener">Showcase alt</a>
+      </div>
+    </article>
+
+    <article>
+      <div class="pic none"><strong>No listing photo</strong>LoopNet / BaySpace</div>
+      <div class="body">
+        <div class="badges">
+          <span class="badge warn">CAM unknown</span>
+          <span class="badge">12' clear</span>
+        </div>
+        <h2><a href="https://www.loopnet.com/Listing/7330-Rampart-St-Houston-TX/35350852/" target="_blank" rel="noopener">Rampart Business Park</a></h2>
+        <p class="addr">7330–7334 Rampart St, Houston, TX 77081 · Gulfton / SW Inner Loop · ~8 mi</p>
+        <div class="stats">
+          <div><span>Size</span><strong>~1,500 sf suites</strong></div>
+          <div><span>Base</span><strong>$1,250–$1,375/mo</strong></div>
+          <div><span>Access</span><strong>Street-level overhead</strong></div>
+          <div><span>Inside</span><strong>Office + restroom</strong></div>
+        </div>
+        <p class="desc">$10–$11/SF/YR base. One month free advertised. Twelve-foot clear is tight for racking or vans. NNN/CAM not published.</p>
+        <div class="pc">
+          <div><h3>Pros</h3><ul><li>Base under $2k</li><li>Office + bath</li><li>Inner Loop SW</li></ul></div>
+          <div><h3>Cons</h3><ul><li>12' clear</li><li>CAM unknown</li></ul></div>
+        </div>
+        <a class="cta" href="https://www.loopnet.com/Listing/7330-Rampart-St-Houston-TX/35350852/" target="_blank" rel="noopener">Open LoopNet</a>
+        &nbsp;
+        <a class="cta" href="https://www.bayspace.com/properties/rampart-business-park-houston-tx" target="_blank" rel="noopener">BaySpace</a>
+      </div>
+    </article>
+
+    <article>
+      <div class="pic none"><strong>No listing photo</strong>Craigslist post · call to verify</div>
+      <div class="body">
+        <div class="badges">
+          <span class="badge hot">Cheapest posted monthly</span>
+        </div>
+        <h2><a href="https://www.craigslist.org/view/d/houston-warehouse-office-for-lease/iECP4bCTi5uS9MDmVThTT8" target="_blank" rel="noopener">5207 Hardway St</a></h2>
+        <p class="addr">Houston, TX 77092 · NW near 290/610 · ~9 mi</p>
+        <div class="stats">
+          <div><span>Size</span><strong>1,200 sf</strong></div>
+          <div><span>Rent</span><strong>$1,000/mo</strong></div>
+          <div><span>Access</span><strong>Grade-level 10×10 roll-up</strong></div>
+          <div><span>Inside</span><strong>Small office + bath</strong></div>
+        </div>
+        <p class="desc">Lowest posted monthly. No auto mechanics. Utilities and deposit not listed. Farther than Dashwood for not much more space.</p>
+        <div class="pc">
+          <div><h3>Pros</h3><ul><li>$1,000 posted</li><li>Office + bath</li></ul></div>
+          <div><h3>Cons</h3><ul><li>~9 mi</li><li>No dock / power spec</li><li>No auto</li></ul></div>
+        </div>
+        <a class="cta" href="https://www.craigslist.org/view/d/houston-warehouse-office-for-lease/iECP4bCTi5uS9MDmVThTT8" target="_blank" rel="noopener">Open listing</a>
+      </div>
+    </article>
+
+    <article>
+      <div class="pic none"><strong>No listing photo</strong>Craigslist · same landlord as Dashwood</div>
+      <div class="body">
+        <div class="badges">
+          <span class="badge">Posted under $2k</span>
+        </div>
+        <h2><a href="https://www.craigslist.org/view/d/houston-5562-gasmer-dr-workshop-for/kaa2AVB4ZjaVz51rkbsf6o" target="_blank" rel="noopener">5562 Gasmer Dr</a></h2>
+        <p class="addr">Houston, TX 77035 · SW Houston · ~9 mi</p>
+        <div class="stats">
+          <div><span>Size</span><strong>~1,209 / ~1,800 sf</strong></div>
+          <div><span>Rent</span><strong>$1,350 / $1,850</strong></div>
+          <div><span>Extras</span><strong>Water in · tenant electric</strong></div>
+          <div><span>Term</span><strong>6 months to 1 year</strong></div>
+        </div>
+        <p class="desc">Same landlord as Dashwood (Ricardo). Useful if Dashwood is gone. Farther and not as close to Montrose.</p>
+        <div class="pc">
+          <div><h3>Pros</h3><ul><li>Posted under $2k</li><li>Easy compare vs Dashwood</li></ul></div>
+          <div><h3>Cons</h3><ul><li>SW, ~9 mi</li><li>Tenant electric</li></ul></div>
+        </div>
+        <a class="cta" href="https://www.craigslist.org/view/d/houston-5562-gasmer-dr-workshop-for/kaa2AVB4ZjaVz51rkbsf6o" target="_blank" rel="noopener">Open listing</a>
+      </div>
+    </article>
+
+    <article>
+      <div class="pic"><img src="photos/crate.webp" alt="Crate Warehouse, 7250 W 43rd St" /></div>
+      <div class="body">
+        <div class="badges">
+          <span class="badge">All-in</span>
+          <span class="badge">Dock-high</span>
+          <span class="badge warn">1,200+ sf may miss $2k</span>
+        </div>
+        <h2><a href="https://www.hellocrate.co/" target="_blank" rel="noopener">Crate Warehouse</a></h2>
+        <p class="addr">7250 W 43rd St, Houston, TX 77092 · NW Inner Loop · ~10 mi</p>
+        <div class="stats">
+          <div><span>Size</span><strong>1,000 / 1,250 / 1,500 / 2,000 sf</strong></div>
+          <div><span>Rent</span><strong>600–1,200 sf $1k–$2k all-in</strong></div>
+          <div><span>Access</span><strong>Dock-high, semi-dock, ramp</strong></div>
+          <div><span>Power</span><strong>1,200A 277–480V 3-phase</strong></div>
+        </div>
+        <p class="desc">Real docks and 3-phase. Operator bands put 1,200+ sf at $2,000–$3,500 all-in, so only the smaller suites likely clear the cap. 6-month minimum. Private offices extra from $400.</p>
+        <div class="pc">
+          <div><h3>Pros</h3><ul><li>Docks + 3-phase</li><li>All-in, no NNN</li></ul></div>
+          <div><h3>Cons</h3><ul><li>~10 mi</li><li>1,200+ sf likely over $2k</li></ul></div>
+        </div>
+        <a class="cta" href="https://www.hellocrate.co/" target="_blank" rel="noopener">Open listing</a>
+      </div>
+    </article>
+
+    <article>
+      <div class="pic none"><strong>No listing photo</strong>Craigslist · Hobby / SE</div>
+      <div class="body">
+        <div class="badges">
+          <span class="badge">Posted $1,200</span>
+        </div>
+        <h2><a href="https://www.craigslist.org/view/d/south-houston-office-warehouse-space/qzzS1u2kaBsyky1QxtnwNk" target="_blank" rel="noopener">9125 Airport Blvd</a></h2>
+        <p class="addr">Houston, TX 77061 · Hobby / SE · ~10 mi</p>
+        <div class="stats">
+          <div><span>Size</span><strong>1,250 sf</strong></div>
+          <div><span>Rent</span><strong>$1,200/mo</strong></div>
+          <div><span>Access</span><strong>Grade-level 10×10</strong></div>
+          <div><span>Inside</span><strong>Office + 1 bath</strong></div>
+        </div>
+        <p class="desc">Posted $1,200. Call 713-944-1185. Fine number, wrong side of town vs Montrose.</p>
+        <div class="pc">
+          <div><h3>Pros</h3><ul><li>$1,200 posted</li><li>Office + bath</li></ul></div>
+          <div><h3>Cons</h3><ul><li>Hobby / SE</li><li>~10 mi</li></ul></div>
+        </div>
+        <a class="cta" href="https://www.craigslist.org/view/d/south-houston-office-warehouse-space/qzzS1u2kaBsyky1QxtnwNk" target="_blank" rel="noopener">Open listing</a>
+      </div>
+    </article>
+
+  </main>
+  <footer>
+    First pass Aug 28, 2026. Ranked by drive miles to Houston 77006. No invented listings or rents.
+    Photos are operator-site photos where we could fetch them; Craigslist / Marketplace cards are placeholders, not fake interiors.
+    Repo: <a href="https://github.com/dcamco/houston-warehouse">dcamco/houston-warehouse</a>
+  </footer>
+</body>
+</html>
