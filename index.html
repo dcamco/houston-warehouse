@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     :root {
       --ink: #1a1714;
@@ -186,6 +187,192 @@
     @media (max-width: 720px) {
       .kit { grid-template-columns: 1fr 1fr; }
     }
+
+    article { scroll-margin-top: 0.75rem; }
+    article.map-flash {
+      outline: 2px solid var(--accent);
+      box-shadow: 0 0 0 5px rgba(196, 92, 22, 0.22);
+    }
+
+    .board-map {
+      display: grid;
+      gap: 0.4rem;
+    }
+    .map-caption {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    #hunt-map {
+      height: 340px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #e8e0d4;
+      z-index: 0;
+      overflow: hidden;
+    }
+    #hunt-map .leaflet-container {
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      background: #e8e0d4;
+    }
+    .map-legend {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem 1.15rem;
+      margin: 0;
+      padding: 0.1rem 0 0.15rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .map-legend li { display: flex; align-items: center; gap: 0.4rem; }
+    .map-legend .lg {
+      width: 10px;
+      height: 10px;
+      border: 1.5px solid #fff;
+      box-shadow: 0 0 0 1px var(--line);
+      flex: 0 0 auto;
+    }
+    .map-legend .lg.live { background: var(--accent); border-radius: 50%; }
+    .map-legend .lg.hold {
+      background: var(--warn);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+    }
+    .map-legend .lg.home {
+      background: var(--ink);
+      border-radius: 2px;
+      transform: rotate(45deg);
+    }
+
+    .pin-wrap {
+      background: none !important;
+      border: none !important;
+    }
+    .pin {
+      width: 14px;
+      height: 14px;
+      box-sizing: border-box;
+    }
+    .pin.live {
+      background: var(--accent);
+      border: 2px solid #fffdf8;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(26, 23, 20, 0.35);
+    }
+    .pin.hold {
+      width: 16px;
+      height: 16px;
+      background: var(--warn);
+      border: 2px solid #fffdf8;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 1px 4px rgba(26, 23, 20, 0.35);
+    }
+    .pin.home {
+      width: 12px;
+      height: 12px;
+      background: var(--ink);
+      border: 2px solid #fffdf8;
+      border-radius: 2px;
+      transform: rotate(45deg);
+      box-shadow: 0 1px 4px rgba(26, 23, 20, 0.4);
+    }
+
+    .leaflet-popup.listing-popup .leaflet-popup-content-wrapper {
+      background: var(--card);
+      color: var(--ink);
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(26, 23, 20, 0.16);
+      padding: 0;
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+    }
+    .leaflet-popup.listing-popup .leaflet-popup-content {
+      margin: 0.7rem 0.85rem 0.75rem;
+      line-height: 1.35;
+    }
+    .leaflet-popup.listing-popup .leaflet-popup-tip {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+    .leaflet-popup.listing-popup .leaflet-popup-close-button {
+      color: var(--muted);
+      top: 4px;
+      right: 6px;
+      font-size: 18px;
+    }
+    .pop-hold {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warn);
+      margin-bottom: 0.25rem;
+    }
+    .pop-title {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+      font-size: 1.02rem;
+      display: block;
+      margin: 0 0 0.15rem;
+      padding-right: 1rem;
+    }
+    .pop-addr {
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin: 0 0 0.45rem;
+    }
+    .pop-row {
+      display: grid;
+      grid-template-columns: 3.2rem 1fr;
+      gap: 0.2rem 0.45rem;
+      font-size: 0.84rem;
+      margin: 0.12rem 0;
+    }
+    .pop-row span {
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding-top: 0.12rem;
+    }
+    .pop-jump {
+      display: inline-block;
+      margin-top: 0.55rem;
+      background: var(--ink);
+      color: var(--paper);
+      border: 0;
+      border-radius: 8px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.42rem 0.75rem;
+      cursor: pointer;
+    }
+    .pop-jump:hover { background: #000; }
+    .leaflet-tooltip.home-tip {
+      background: var(--ink);
+      color: var(--paper);
+      border: 0;
+      border-radius: 6px;
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.2rem 0.45rem;
+      box-shadow: none;
+    }
+    .leaflet-tooltip.home-tip::before { border-top-color: var(--ink); }
+    .leaflet-container a.leaflet-popup-close-button { text-decoration: none; }
+    .leaflet-control-attribution {
+      font-size: 9px;
+      background: rgba(244, 239, 230, 0.85) !important;
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      #hunt-map { height: 280px; }
+    }
     @media (max-width: 720px) {
       article { grid-template-columns: 1fr; }
       article .pic img, article .pic { min-height: 220px; max-height: 260px; }
@@ -200,8 +387,17 @@
     <p class="meta">Private shop bays you can park a car in. Ranked by off-peak drive from Montrose 77006 (after-dinner / weekend), not rush hour. ReadySpaces / Cubework and any “no auto” listings are out. Target under $2,000/month all-in. Checked Saturday Aug 29, 2026.</p>
   </header>
   <main>
+    <section class="board-map" aria-label="Listing map">
+      <p class="map-caption">Click a pin for a preview. Click again for the full card.</p>
+      <div id="hunt-map" role="application" aria-label="Houston warehouse listings map"></div>
+      <ul class="map-legend">
+        <li><i class="lg live" aria-hidden="true"></i> Live listing</li>
+        <li><i class="lg hold" aria-hidden="true"></i> On hold</li>
+        <li><i class="lg home" aria-hidden="true"></i> 77006 home</li>
+      </ul>
+    </section>
 
-<article>
+<article id="dashwood">
       <div class="pic none"><strong>No listing photo</strong>Craigslist post · call to verify</div>
       <div class="body">
         <div class="badges">
@@ -235,7 +431,7 @@
         <a class="cta" href="https://www.craigslist.org/view/d/houston-dashwood-dr-workshop-warehouse/ht3RAG97JkKcEVcuDRjW1J" target="_blank" rel="noopener">Open listing</a>
       </div>
     </article>
-<article>
+<article id="w34th-6002">
       <div class="pic none"><strong>No listing photo</strong>Craigslist post · same landlord as 6008</div>
       <div class="body">
         <div class="badges">
@@ -270,7 +466,7 @@
         <a class="cta" href="https://www.craigslist.org/view/d/houston-warehouse-with-office-for-lease/sStfoPrhGzFYH35BeFX65m" target="_blank" rel="noopener">Open listing</a>
       </div>
     </article>
-<article>
+<article id="jessamine">
       <div class="pic none"><strong>No listing photo</strong>WorkBay named 1,080 sf</div>
       <div class="body">
         <div class="badges">
@@ -307,7 +503,7 @@
         <a class="cta" href="https://workbay.com/wp-content/uploads/2025/07/Floor-Plan-Jessamine.pdf" target="_blank" rel="noopener">Floor plan</a>
       </div>
     </article>
-<article>
+<article id="sloop">
       <div class="pic none"><strong>No listing photo</strong>CityFeet / Showcase</div>
       <div class="body">
         <div class="badges">
@@ -353,7 +549,7 @@
         <a class="cta" href="https://www.showcase.com/5900-5934-s-loop-fwy-houston-tx-77033/25532928/" target="_blank" rel="noopener">Showcase alt</a>
       </div>
     </article>
-<article>
+<article id="rampart">
       <div class="pic none"><strong>No listing photo</strong>LoopNet / BaySpace</div>
       <div class="body">
         <div class="badges">
@@ -389,7 +585,7 @@
         <a class="cta" href="https://www.bayspace.com/properties/rampart-business-park-houston-tx" target="_blank" rel="noopener">BaySpace</a>
       </div>
     </article>
-<article>
+<article id="gasmer">
       <div class="pic none"><strong>No listing photo</strong>Craigslist · same landlord as Dashwood</div>
       <div class="body">
         <div class="badges">
@@ -422,7 +618,7 @@
         <a class="cta" href="https://www.craigslist.org/view/d/houston-5562-gasmer-dr-workshop-for/kaa2AVB4ZjaVz51rkbsf6o" target="_blank" rel="noopener">Open listing</a>
       </div>
     </article>
-<article>
+<article id="nfreeway">
       <div class="pic none"><strong>No listing photo</strong>Facebook Marketplace · signage in listing photos</div>
       <div class="body">
         <div class="badges">
@@ -458,7 +654,7 @@
         <a class="cta" href="https://www.facebook.com/marketplace/item/1597943698784992/" target="_blank" rel="noopener">Open $1,150 listing</a>
       </div>
     </article>
-<article>
+<article id="crate">
       <div class="pic"><img src="photos/crate.webp" alt="Crate Warehouse, 7250 W 43rd St" /></div>
       <div class="body">
         <div class="badges">
@@ -493,7 +689,7 @@
         <a class="cta" href="https://www.hellocrate.co/" target="_blank" rel="noopener">Open listing</a>
       </div>
     </article>
-<article>
+<article id="airport">
       <div class="pic none"><strong>No listing photo</strong>Craigslist · Hobby / SE</div>
       <div class="body">
         <div class="badges">
@@ -526,7 +722,7 @@
         <a class="cta" href="https://www.craigslist.org/view/d/south-houston-office-warehouse-space/qzzS1u2kaBsyky1QxtnwNk" target="_blank" rel="noopener">Open listing</a>
       </div>
     </article>
-<article>
+<article id="w34th-4800">
       <div class="pic none"><strong>No listing photo</strong>Crexi · Hunington Properties</div>
       <div class="body">
         <div class="badges">
@@ -570,7 +766,7 @@
       </div>
     </article>
 <p class="section-label">Calmer west / northwest · ~20 min off-peak from Montrose</p>
-<article>
+<article id="hempstead">
       <div class="pic none"><strong>No listing photo</strong>WorkBay Hempstead · six named units</div>
       <div class="body">
         <div class="badges">
@@ -618,7 +814,7 @@
         <a class="cta" href="https://www.cityfeet.com/cont/listing/14518-hempstead-hwy-houston-tx-77040/cs29802628" target="_blank" rel="noopener">CityFeet suites</a>
       </div>
     </article>
-<article>
+<article id="beltway">
       <div class="pic none"><strong>No listing photo</strong>Brevitas · 77041</div>
       <div class="body">
         <div class="badges">
@@ -652,7 +848,7 @@
         <a class="cta" href="https://brevitas.com/p/nywIzgsv1/beltway-industrial-park" target="_blank" rel="noopener">Open listing</a>
       </div>
     </article>
-<article>
+<article id="aston">
       <div class="pic none"><strong>No listing photo</strong>Craigslist · Keen</div>
       <div class="body">
         <div class="badges">
@@ -687,7 +883,7 @@
         <a class="cta" href="https://www.craigslist.org/view/d/houston-office-flex-warehouse-available/7n4EGnVXUoJpDu2GBvz3y5" target="_blank" rel="noopener">Open listing</a>
       </div>
     </article>
-<article>
+<article id="milwee">
       <div class="pic none"><strong>No listing photo</strong>CommercialCafe · auto tenants on site</div>
       <div class="body">
         <div class="badges">
@@ -722,7 +918,7 @@
         <a class="cta" href="https://www.commercialcafe.com/commercial-property/us/tx/houston/4901-milwee-st-1/" target="_blank" rel="noopener">Open listing</a>
       </div>
     </article>
-<article>
+<article id="springbranch">
       <div class="pic none"><strong>No listing photo</strong>Showcase · hobbyist / garage</div>
       <div class="body">
         <div class="badges">
@@ -756,7 +952,7 @@
         <a class="cta" href="https://www.showcase.com/8918-spring-branch-dr-houston-tx-77080/27121410/" target="_blank" rel="noopener">Open listing</a>
       </div>
     </article>
-<article>
+<article id="wlyork">
       <div class="pic none"><strong>No listing photo</strong>West Little York 77040</div>
       <div class="body">
         <div class="badges">
@@ -792,7 +988,7 @@
     </article>
 <p class="section-label">On hold — not a live shop until no-mechanics is cleared</p>
 <div class="unpriced-wrap">
-<article>
+<article id="w34th-6008">
       <div class="pic none"><strong>No listing photo</strong>Craigslist + Facebook</div>
       <div class="body">
         <div class="badges">
@@ -836,5 +1032,170 @@
     Photos are operator-site photos where we could fetch them; Craigslist / Marketplace cards are placeholders, not fake interiors.
     Repo: <a href="https://github.com/dcamco/houston-warehouse">dcamco/houston-warehouse</a>
   </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    (function () {
+      var listings = [
+        { id: "dashwood", lat: 29.707331, lng: -95.478739, title: "5611 Dashwood Dr", addr: "Houston, TX 77081 · Gulfton", rent: "$1,750/mo posted", auto: "Likely yes · auto tenants on site", drive: "7.5 mi · ~11 min off-peak" },
+        { id: "w34th-6002", lat: 29.819366, lng: -95.477471, title: "6002 W 34th St", addr: "Houston, TX 77092 · Oak Forest", rent: "$1,465/mo gross", auto: "Unknown · confirm", drive: "12 mi · ~16 min off-peak" },
+        { id: "jessamine", lat: 29.701961, lng: -95.487471, title: "WorkBay Jessamine · 1,080 sf", addr: "6020 Jessamine St, Houston, TX 77081", rent: "$1,616–$1,773/mo", auto: "Auto welcomed · overnight unconfirmed", drive: "8.3 mi · ~14 min off-peak" },
+        { id: "sloop", lat: 29.691037, lng: -95.331928, title: "South Loop Business Park", addr: "5900–5934 S Loop Fwy, Houston, TX 77033", rent: "$608–$850/mo base", auto: "Unknown · need auto-yes", drive: "~8 mi" },
+        { id: "rampart", lat: 29.699688, lng: -95.488820, title: "Rampart Business Park", addr: "7330–7334 Rampart St, Houston, TX 77081", rent: "$1,250–$1,375/mo base", auto: "Unknown · need auto-yes", drive: "~8 mi" },
+        { id: "gasmer", lat: 29.651077, lng: -95.481244, title: "5562 Gasmer Dr", addr: "Houston, TX 77035 · SW Houston", rent: "$1,350 / $1,850", auto: "Unknown · confirm", drive: "~9 mi" },
+        { id: "nfreeway", lat: 29.872764, lng: -95.408972, title: "North Freeway Business Park", addr: "7676 N. Fwy, Houston, TX 77022", rent: "$1,150 / $1,250/mo", auto: "Unknown · confirm", drive: "~9–10 mi" },
+        { id: "crate", lat: 29.834648, lng: -95.502829, title: "Crate Warehouse", addr: "7250 W 43rd St, Houston, TX 77092", rent: "600–1,200 sf $1k–$2k all-in", auto: "Unknown · need auto-yes", drive: "~10 mi" },
+        { id: "airport", lat: 29.652234, lng: -95.254789, title: "9125 Airport Blvd", addr: "Houston, TX 77061 · Hobby / SE", rent: "$1,200/mo", auto: "Unknown · confirm", drive: "~10 mi" },
+        { id: "w34th-4800", lat: 29.820019, lng: -95.460935, title: "34th St Business Park", addr: "4800 W 34th St, Houston, TX 77092", rent: "~$1,476–$2,035/mo all-in", auto: "Unknown · confirm", drive: "~9 mi" },
+        { id: "hempstead", lat: 29.860259, lng: -95.542031, title: "WorkBay Hempstead", addr: "14518 Hempstead Hwy, Houston, TX 77040", rent: "park from $1,470 · confirm", auto: "Yes · auto shops allowed", drive: "18 mi · ~20 min off-peak" },
+        { id: "beltway", lat: 29.863945, lng: -95.584939, title: "Beltway Industrial Park", addr: "11875 W Little York / Cunningham, Houston, TX 77041", rent: "$1,350/mo NNN", auto: "Unknown · no ban found" },
+        { id: "aston", lat: 29.853894, lng: -95.531565, title: "Aston Industrial Park", addr: "14201–14227 Aston St, Houston, TX 77040", rent: "$1,700/mo + $125 CAM", auto: "Unknown · confirm" },
+        { id: "milwee", lat: 29.822274, lng: -95.463058, title: "4901 Milwee St · #110", addr: "Houston, TX 77092 · Oak Forest", rent: "$1,728/mo NNN", auto: "Likely yes · auto tenants at address" },
+        { id: "springbranch", lat: 29.803012, lng: -95.510445, title: "Spring Branch Warehouses · E-1", addr: "8938 Spring Branch Dr, Houston, TX 77080", rent: "$1,250/mo", auto: "Unknown · no ban" },
+        { id: "wlyork", lat: 29.865612, lng: -95.494366, title: "West Little York Business Park", addr: "6989 W Little York Rd, Houston, TX 77040", rent: "$1,056–$1,109/mo NNN", auto: "Unknown · confirm" },
+        { id: "w34th-6008", lat: 29.819341, lng: -95.478455, title: "6008 W 34th St · #6022", addr: "Houston, TX 77092 · Oak Forest", rent: "$2,345/mo gross", auto: "On hold · nearby ad bans mechanics", drive: "~7 mi", hold: true }
+      ];
+
+      var home = { lat: 29.735802, lng: -95.391603, label: "77006 · home" };
+
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+        });
+      }
+
+      function pinIcon(kind) {
+        var size = kind === "hold" ? 16 : kind === "home" ? 12 : 14;
+        var anchorY = kind === "hold" ? 16 : size / 2;
+        return L.divIcon({
+          className: "pin-wrap",
+          html: '<div class="pin ' + kind + '"></div>',
+          iconSize: [size, size],
+          iconAnchor: [size / 2, anchorY],
+          popupAnchor: [0, -anchorY]
+        });
+      }
+
+      function popupHtml(item) {
+        var hold = item.hold ? '<div class="pop-hold">ON HOLD</div>' : "";
+        var drive = item.drive
+          ? '<div class="pop-row"><span>Drive</span><strong>' + esc(item.drive) + "</strong></div>"
+          : "";
+        return (
+          '<div class="pop">' +
+          hold +
+          '<strong class="pop-title">' + esc(item.title) + "</strong>" +
+          '<div class="pop-addr">' + esc(item.addr) + "</div>" +
+          '<div class="pop-row"><span>Rent</span><strong>' + esc(item.rent) + "</strong></div>" +
+          '<div class="pop-row"><span>Auto</span><strong>' + esc(item.auto) + "</strong></div>" +
+          drive +
+          '<button type="button" class="pop-jump" data-jump="' + esc(item.id) + '">Full listing</button>' +
+          "</div>"
+        );
+      }
+
+      var map = L.map("hunt-map", {
+        scrollWheelZoom: true,
+        tap: true,
+        maxZoom: 18,
+        minZoom: 9
+      });
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 19
+      }).addTo(map);
+
+      var selectedId = null;
+      var pendingJump = false;
+      var opening = false;
+      var markers = {};
+
+      function jumpToCard(id) {
+        var el = document.getElementById(id);
+        pendingJump = true;
+        map.closePopup();
+        selectedId = null;
+        if (!el) return;
+        el.scrollIntoView({ block: "start", behavior: "smooth" });
+        el.classList.remove("map-flash");
+        void el.offsetWidth;
+        el.classList.add("map-flash");
+        window.setTimeout(function () { el.classList.remove("map-flash"); }, 1600);
+      }
+
+      map.on("popupclose", function () {
+        if (opening) return;
+        if (pendingJump) { pendingJump = false; return; }
+        selectedId = null;
+      });
+
+      map.on("popupopen", function (e) {
+        var btn = e.popup.getElement() && e.popup.getElement().querySelector(".pop-jump");
+        if (!btn) return;
+        L.DomEvent.disableClickPropagation(btn);
+        L.DomEvent.on(btn, "click", function (ev) {
+          L.DomEvent.stop(ev);
+          jumpToCard(btn.getAttribute("data-jump"));
+        });
+      });
+
+      var bounds = L.latLngBounds([]);
+
+      listings.forEach(function (item) {
+        var marker = L.marker([item.lat, item.lng], {
+          icon: pinIcon(item.hold ? "hold" : "live"),
+          title: item.title,
+          riseOnHover: true,
+          keyboard: true
+        }).addTo(map);
+
+        marker.on("click", function () {
+          if (selectedId === item.id) {
+            jumpToCard(item.id);
+            return;
+          }
+          opening = true;
+          selectedId = item.id;
+          L.popup({
+            className: "listing-popup",
+            maxWidth: 280,
+            minWidth: 200,
+            closeButton: true,
+            autoClose: true,
+            closeOnClick: true,
+            keepInView: true,
+            offset: [0, -10]
+          })
+            .setLatLng(marker.getLatLng())
+            .setContent(popupHtml(item))
+            .openOn(map);
+          opening = false;
+        });
+
+        markers[item.id] = marker;
+        bounds.extend([item.lat, item.lng]);
+      });
+
+      var homeMarker = L.marker([home.lat, home.lng], {
+        icon: pinIcon("home"),
+        title: home.label,
+        keyboard: true,
+        riseOnHover: true
+      }).addTo(map);
+      homeMarker.bindTooltip(home.label, {
+        direction: "top",
+        offset: [0, -6],
+        className: "home-tip",
+        opacity: 1
+      });
+      homeMarker.on("click", function (e) {
+        L.DomEvent.stop(e);
+      });
+      bounds.extend([home.lat, home.lng]);
+
+      map.fitBounds(bounds, { padding: [28, 28], maxZoom: 12 });
+      setTimeout(function () { map.invalidateSize(); }, 0);
+    })();
+  </script>
 </body>
 </html>
